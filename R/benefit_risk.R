@@ -117,7 +117,7 @@ summary.brisk_br <- function(
   reference = NULL,
   ...
 ) {
-  ellipsis::check_dots_empty()
+  rlang::check_dots_empty()
   scores <- adjust_column(object, reference, "total")
   sumry <- scores %>%
     dplyr::group_by(.data$label) %>%

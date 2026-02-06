@@ -8,7 +8,7 @@
 #' @family plots
 #' @export
 plot.brisk_br <- function(x, reference = NULL, ...) {
-  ellipsis::check_dots_empty()
+  rlang::check_dots_empty()
   scores <- summary(x, reference = reference)$scores
   title <- adjust_title("Benefit-Risk Score Distribution", reference)
   p <- ggplot(
