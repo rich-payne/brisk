@@ -43,13 +43,13 @@ plot.brisk_br <- function(x, reference = NULL, ...) {
 plot_utility <- function(x, reference = NULL, stacked = FALSE) {
   scores <- adjust_column(x, reference, ends_with("_score"))
   post_mean <- scores %>%
-    dplyr::group_by(.data$label) %>%
+    dplyr::group_by(across(all_of("label"))) %>%
     dplyr::summarize(
       across(ends_with("_score"), mean),
       .groups = "drop"
     ) %>%
     tidyr::pivot_longer(
-      - .data$label,
+      -"label",
       names_to = "Outcome",
       values_to = "Score"
     ) %>%
@@ -63,7 +63,7 @@ plot_utility <- function(x, reference = NULL, stacked = FALSE) {
       theme(plot.title = element_text(hjust = 0.5))
   } else {
     data_label <- post_mean %>%
-      dplyr::group_by(.data$label) %>%
+      dplyr::group_by(across(all_of("label"))) %>%
       dplyr::summarise(Score = sum(.data$Score))
     p <- ggplot(
       post_mean,
