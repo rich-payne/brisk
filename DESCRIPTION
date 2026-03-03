@@ -26,7 +26,7 @@ Description: Quantitative methods for benefit-risk analysis help to condense
     included.
 License: MIT + file LICENSE
 Imports:
-  dplyr (>= 1.1),
+  dplyr (>= 1.2),
   ggplot2 (>= 3.3),
   hitandrun (>= 0.5),
   purrr (>= 0.3),
