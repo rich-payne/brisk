@@ -4,7 +4,6 @@
 #'   across
 #'   c_across
 #'   cur_column
-#'   cur_data
 #'   ends_with
 #'   everything
 #'   n
