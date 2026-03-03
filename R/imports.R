@@ -2,6 +2,7 @@
 #'   %>%
 #'   .data
 #'   across
+#'   all_of
 #'   c_across
 #'   cur_column
 #'   ends_with
