@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# brisk
+# brisk <img src='inst/hex-brisk.png' align="right" height="139"/>
 
 <!-- badges: start -->
 
