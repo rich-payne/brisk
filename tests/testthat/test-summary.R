@@ -24,7 +24,7 @@ test_that("summary()", {
     dplyr::ungroup()
   expect_equal(summary(res), list(summary = exp_summary, scores = res))
   # summary with null probs
-  exp_summary2 <- dplyr::select(exp_summary, .data$label, .data$mean)
+  exp_summary2 <- dplyr::select(exp_summary, "label", "mean")
   expect_equal(
     summary(res, probs = NULL),
     list(summary = exp_summary2, scores = res)

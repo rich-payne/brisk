@@ -117,17 +117,19 @@ summary.brisk_br <- function(
   reference = NULL,
   ...
 ) {
-  ellipsis::check_dots_empty()
+  rlang::check_dots_empty()
   scores <- adjust_column(object, reference, "total")
   sumry <- scores %>%
     dplyr::group_by(.data$label) %>%
-    dplyr::summarize(
+    dplyr::reframe(
       mean = mean(.data$total),
-      qtiles = safe_quantile(.data$total, prob = !!probs)
+      qtiles = safe_quantile(.data$total, prob = !!probs),
+      probs = probs
     )
   if (!is.null(probs)) {
     sumry <- sumry %>%
-      dplyr::mutate(qtile_label = sprintf("%.2f%%", 100 * !!probs)) %>%
+      dplyr::mutate(qtile_label = sprintf("%.2f%%", 100 * probs)) %>%
+      dplyr::select(-"probs") %>%
       tidyr::pivot_wider(
         names_from = "qtile_label",
         values_from = "qtiles"
@@ -211,7 +213,7 @@ adjust_column <- function(scores, reference, col) {
     dplyr::mutate(
       across(
         !!col,
-        ~ .x - cur_data()[[paste0(cur_column(), "_ref")]]
+        ~ .x - dplyr::pick(paste0(cur_column(), "_ref"))[[1]]
       )
     ) %>%
     dplyr::select(- ends_with("_ref")) %>%
