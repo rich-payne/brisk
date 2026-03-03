@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# brisk <img src='inst/hex-brisk.png' align="right" height="139"/>
+# brisk
 
 <!-- badges: start -->
 
@@ -50,7 +50,7 @@ benefit_fun <- approxfun(c(0, 0.5, 1), c(0, 0.2, 1))
 curve(benefit_fun, xlab = "Response Rate", ylab = "Benefit Utility Function")
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" />
 
 The drug is also believed to have some side effects. The side effects
 are considered mild, but, having more than 30% of subjects having a side
@@ -63,7 +63,7 @@ risk_fun <- approxfun(c(0, 0.3, 0.6, 1), c(1, 0.9, 0.2, 0))
 curve(risk_fun, xlab = "Side-Effect Rate", ylab = "Risk Utility Function")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
 
 Since the side effects are mild, we will assign greater weight on
 ensuring that the drug works (75%) and a lower weight on the side
@@ -127,7 +127,7 @@ head(out)
 #> 4    0.334            0.75           0.133          0.100       0.0586
 #> 5    0.388            0.75           0.155          0.117       0.0184
 #> 6    0.230            0.75           0.0921         0.0691      0.0438
-#> # … with 6 more variables: side_effect_weight <dbl>, side_effect_utility <dbl>,
+#> # ℹ 6 more variables: side_effect_weight <dbl>, side_effect_utility <dbl>,
 #> #   side_effect_score <dbl>, label <chr>, iter <int>, total <dbl>
 ```
 
@@ -135,7 +135,7 @@ For each benefit/risk, there is a column with the posterior parameter,
 the weight, the utility (given a parameter value), and the score (weight
 times utility). There is also a column labeling the groups (“label”) and
 a total benefit-risk score (“total”, which is the sum of the columns
-with the suffix "\_score"). This output has all the information to make
+with the suffix “\_score”). This output has all the information to make
 useful inference, but, `brisk` provides some useful functions to make
 this easier. For instance, we can very quickly get a summary of the
 posterior benefit-risk scores using the `summary()` function:
@@ -193,13 +193,13 @@ group.
 plot(out)
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" alt="" width="100%" />
 
 ``` r
 plot(out, reference = "placebo")
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-2.png" alt="" width="100%" />
 
 Lastly, there are some useful functions for plotting the posterior
 weighted mean utility of each benefit/risk for each group.
@@ -208,19 +208,19 @@ weighted mean utility of each benefit/risk for each group.
 plot_utility(out)
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" alt="" width="100%" />
 
 ``` r
 plot_utility(out, reference = "placebo")
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-2.png" alt="" width="100%" />
 
 ``` r
 plot_utility(out, stacked = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-3.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-3.png" alt="" width="100%" />
 
 # Additional Notes
 
