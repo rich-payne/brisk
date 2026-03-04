@@ -1,1 +1,4 @@
 url: https://rich-payne.github.io/brisk
+
+template:
+  bootstrap: 5
